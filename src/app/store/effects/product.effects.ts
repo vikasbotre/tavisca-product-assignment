@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 
+// tslint:disable-next-line:max-line-length
 import { ListDataSucess, LIST_PRODUCTS, ListProducts, DELETE_PRODUCTS, DeleteProductSuccess, DeleteProducts, ADD_PRODUCTS, UPDATE_PRODUCTS, UpdateProducts, UpdateEditSuccess, AddProducts, AddSuccess } from '../actions/product.actions';
-import { Product } from '../../models/product';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -27,12 +27,13 @@ export class ProductEffects {
         ofType(ADD_PRODUCTS),
         map((action: AddProducts) => action.payload),
         mergeMap(payload => {
-            return this.authService.createProduct(payload.productName, payload.productNumber).pipe(
+            // tslint:disable-next-line:max-line-length
+            return this.authService.createProduct(payload.productName, payload.productNumber, payload.productCategory, payload.productPrice).pipe(
                 map((data) => {
                     if (data) {
                         return new AddSuccess(data);
                     }
-                }))
+                }));
         }));
 
     @Effect({ dispatch: true })

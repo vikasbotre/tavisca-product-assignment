@@ -15,7 +15,7 @@ export class AuthService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
-  }
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -28,7 +28,7 @@ export class AuthService {
     return this.http.post<User>(url, { email, password }, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   signUp(email: string, password: string): Observable<User> {
@@ -36,7 +36,7 @@ export class AuthService {
     return this.http.post<User>(url, { email, password }, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   getSignUpData(): Observable<Product[]> {
@@ -44,7 +44,7 @@ export class AuthService {
     return this.http.get<Product[]>(url, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   getAllProducts(): Observable<Product[]> {
@@ -52,7 +52,7 @@ export class AuthService {
     return this.http.get<Product[]>(url, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   getProductById(id: number): Observable<Product> {
@@ -60,15 +60,15 @@ export class AuthService {
     return this.http.get<Product>(url + id, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
-  createProduct(productName: string, productNumber: string): Observable<Product> {
+  createProduct(productName: string, productNumber: number, productCategory: string, productPrice: number): Observable<Product> {
     const url = `${this.BASE_URL}/products`;
-    return this.http.post<Product>(url, { productName, productNumber }, this.httpOptions)
+    return this.http.post<Product>(url, { productName, productNumber, productCategory, productPrice }, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   deleteProduct(id): Observable<any> {
@@ -76,7 +76,7 @@ export class AuthService {
     return this.http.delete(`${this.BASE_URL}/` + 'products/' + id, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   updateProduct(id, user): Observable<Product> {
@@ -84,9 +84,10 @@ export class AuthService {
     return this.http.put<Product>(url + id, user, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
+  // tslint:disable-next-line:typedef
   errorHandler(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

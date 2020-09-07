@@ -51,5 +51,5 @@ export type All =
   | SignUp
   | SignUpSuccess
   | SignUpFailure
-  | LogOut
+  | LogOut;
 

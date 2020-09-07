@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppState } from '../../../store/app.states';
 import { Store } from '@ngrx/store';
 import { AddProducts, ListProducts } from 'src/app/store/actions/product.actions';
@@ -13,18 +13,22 @@ import { AddProducts, ListProducts } from 'src/app/store/actions/product.actions
 export class AddProductComponent implements OnInit {
   product: any = {
     productName: null,
-    productNumber: null
-  }
+    productNumber: null,
+    productCategory: null,
+    productPrice: null
+  };
   addForm: FormGroup;
   constructor(private router: Router, private store: Store<AppState>) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const payload = {
       productName: this.product.productName,
-      productNumber: this.product.productNumber
+      productNumber: this.product.productNumber,
+      productCategory: this.product.productCategory,
+      productPrice: this.product.productPrice
     };
     this.store.dispatch(new AddProducts(payload));
     this.store.dispatch(new ListProducts());

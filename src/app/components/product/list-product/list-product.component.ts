@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-product.component.scss']
 })
 export class ListProductComponent implements OnInit {
-  products: any
+  products: any;
   isUpdateActivated = false;
   getState: Observable<any>;
   errorMessage: string | null;
@@ -21,7 +21,7 @@ export class ListProductComponent implements OnInit {
   constructor(public authService: AuthService, private store: Store<AppState>, private router: Router) {
     this.getState = this.store.select(selectMusicState);
   }
-  showUpdateForm() {
+  showUpdateForm(): void {
     this.isUpdateActivated = true;
   }
 
@@ -33,10 +33,10 @@ export class ListProductComponent implements OnInit {
 
   }
 
-  deleteMusic(id: number) {
+  deleteMusic(id: number): void {
     this.authService.deleteProduct(id).subscribe(res => {
       this.products = this.products.filter(item => item.id !== id);
-    })
+    });
   }
 
 }

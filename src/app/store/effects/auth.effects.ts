@@ -11,7 +11,7 @@ import { AuthActionTypes, LogIn, LogInSuccess, LogInFailure, SignUp, SignUpSucce
 @Injectable()
 export class AuthEffects {
 
-  constructor(private actions: Actions, private authService: AuthService, private router: Router,) { }
+  constructor(private actions: Actions, private authService: AuthService, private router: Router) { }
 
   @Effect()
   LogIn: Observable<any> = this.actions.pipe(
@@ -21,7 +21,7 @@ export class AuthEffects {
           map((user) => {
             return new LogInSuccess({ token: user.token, email: payload.email });
           })).pipe(catchError((error) => {
-            return of(new LogInFailure({ error: error }));
+            return of(new LogInFailure({ error }));
           }));
       }));
 
@@ -47,7 +47,7 @@ export class AuthEffects {
           map((user) => {
             return new SignUpSuccess({ token: user.token, email: payload.email });
           })).pipe(catchError((error) => {
-            return of(new SignUpFailure({ error: error }));
+            return of(new SignUpFailure({ error }));
           }));
       }));
 
@@ -67,4 +67,4 @@ export class AuthEffects {
       localStorage.removeItem('token');
     })
   );
-};
+}

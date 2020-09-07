@@ -12,10 +12,11 @@ export const DELETE_PRODUCT_SUCCESS = '[Products] Delete product success';
 export const UPDATE_PRODUCT_SUCCESS = '[Products] Update product success';
 
 export class ListProducts implements Action {
-  Product(Product: any) {
-    throw new Error("Method not implemented.");
-  }
   readonly type = LIST_PRODUCTS;
+  // tslint:disable-next-line:typedef
+  Product() {
+    throw new Error('Method not implemented.');
+  }
 }
 
 export class ListDataSucess implements Action {
@@ -60,4 +61,4 @@ export type ProductActions =
   | UpdateProducts
   | DeleteProducts
   | UpdateEditSuccess
-  | DeleteProductSuccess
+  | DeleteProductSuccess;
