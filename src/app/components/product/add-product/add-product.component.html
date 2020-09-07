@@ -1,0 +1,9 @@
+<div class="add-product-page">
+  <h2>Add Product</h2>
+  <form (ngSubmit)="onSubmit()" ngNativeValidate>
+    <input type="text" [(ngModel)]="product.productName" name="productName" type="text" id="productName" placeholder="Enter Product Name" required autofocus>
+    <input [(ngModel)]="product.productNumber" name="productNumber" type="text" id="productNumber" placeholder="Enter Product Number" required>
+    <button class="btn btn-login" type="submit" name="submit" type="submit" value="Submit">Add</button>
+    <button class="btn btn-cancel" [routerLink]="['/list-product']">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="grid-container-header">
+  <div class="item1">
+    <button class="btn" (click)="toggle()">Change Theme</button>
+  </div>
+  <div class="item2">
+    <button class="btn" routerLink="/product-list" *ngIf="isAuthenticated == false">Product List</button>
+  </div>
+  <div class="item3" *ngIf="isAuthenticated == false">
+    <button class="btn" routerLink="/log-in">Login</button>
+  </div>
+  <div class="item4" *ngIf="isAuthenticated == false">
+    <button class="btn" routerLink="/sign-up">Signup</button>
+  </div>
+  <div class="item3" *ngIf="isAuthenticated == true">
+    <button class="btn" (click)="logOut()">Logout</button>
+  </div>
+</div>

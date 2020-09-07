@@ -1,0 +1,11 @@
+.grid-container-header {
+  display: grid;
+  grid-template-columns: auto 111px 65px 73px;
+  grid-gap: 20px;
+  padding: 10px;
+  overflow: hidden;
+  background-color: #1717fb;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

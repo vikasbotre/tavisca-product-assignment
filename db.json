@@ -1,0 +1,159 @@
+{
+  "login": [
+    {
+      "email": "vb@gmail.com",
+      "password": "test",
+      "id": "zjFjse7"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "T6x5CKj"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "fDgGN98"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "ilANj-M"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "fDigb13"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "vXT-SYi"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "qYAIexr"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "YTx1SSJ"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas",
+      "id": "gStRP9A"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "6geV7Pr"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "yRomF6j"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "dh0IEd6"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "ZlEEe2A"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "sdsdssdsdsds",
+      "id": "efOh5Y4"
+    },
+    {
+      "email": "sdsds@gmail.com",
+      "password": "sdsdsddsdsdsdsdssdsdsdsdsdsdsdsdsds",
+      "id": "wvbgT51"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "94s4piM"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "LyKpmHU"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "KtH2fUm"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "PA9gXSJ"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "_jetij6"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "9q_qGKS"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "W2r1532"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "ayxfB8P"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "ke6QP2E"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "-pNNpDY"
+    }
+  ],
+  "register": [
+    {
+      "id": "1",
+      "username": "vikas",
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992"
+    },
+    {
+      "email": "sdsds@gmail.com",
+      "password": "sddssdsdsd",
+      "id": "Wi4dbR8"
+    }
+  ],
+  "products": [
+    {
+      "productName": "jjjjjd",
+      "productNumber": "jjjjj",
+      "id": "yqn7szF"
+    },
+    {
+      "productName": "sdssdsd",
+      "productNumber": "sdsdsd",
+      "id": "3ORHLjM"
+    },
+    {
+      "productName": "sdsd",
+      "productNumber": "asdada",
+      "id": "s5xKA6X"
+    }
+  ]
+}

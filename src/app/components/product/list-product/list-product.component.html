@@ -1,0 +1,14 @@
+<button type="button" class="btn m-b-16" [routerLink]="['/add-product']">Create Product</button>
+
+<div class="grid-container-list" *ngFor="let product of products">
+    <div class="grid-item">
+        <div class="texts">
+            <h6>Product Name:{{ product.productName }}</h6>
+            <h6>Product Number:{{product.productNumber}}</h6>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn edit m-r-10" href="#" [routerLink]="['/edit-product/', product.id]">Edit</button>
+            <button type="button" class="btn delete" (click)="deleteMusic(product.id)" value="Delete">Delete</button>
+        </div>
+    </div>
+</div>

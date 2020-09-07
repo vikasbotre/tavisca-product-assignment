@@ -1,0 +1,9 @@
+<div class="edit-product-page">
+    <h2>Edit Product</h2>
+    <form [formGroup]="editform" (ngSubmit)="submit()" ngNativeValidate>
+        <input type="text" name="productName" id="productName" formControlName="productName" required placeholder="Add Product Name">
+        <input name="productNumber" id="productNumber" formControlName="productNumber" required placeholder="Add Product Number">
+        <button class="btn btn-login" type="submit" [disabled]="!editform.valid" value="Submit">Edit</button>
+        <button class="btn btn-cancel" [routerLink]="['/list-product']">Cancel</button>
+    </form>
+</div>
