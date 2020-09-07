@@ -20,7 +20,7 @@ export class LogInComponent implements OnInit {
   allSignupData: any;
   incorrectError = false;
 
-  constructor(private store: Store<AppState>, private router: Router, private authService: AuthService) {
+  constructor(private store: Store<AppState>, private authService: AuthService) {
     this.getState = this.store.select(selectAuthState);
   }
 

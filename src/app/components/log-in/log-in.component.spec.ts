@@ -1,16 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms'
 import { LogInComponent } from './log-in.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { AuthService } from 'src/app/services/auth.service';
 
 describe('LogInComponent', () => {
   let component: LogInComponent;
   let fixture: ComponentFixture<LogInComponent>;
+  let store: MockStore;
+  const initialState = {
+    isAuthenticated: false,
+    user: null,
+    errorMessage: null
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogInComponent ]
+      declarations: [LogInComponent],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule],
+      providers: [provideMockStore({ initialState }), AuthService]
     })
-    .compileComponents();
+      .compileComponents();
+    store = TestBed.inject(MockStore);
   }));
 
   beforeEach(() => {
@@ -22,4 +35,5 @@ describe('LogInComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

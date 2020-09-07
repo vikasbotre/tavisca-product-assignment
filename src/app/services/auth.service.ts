@@ -9,7 +9,7 @@ import { Product } from '../models/product';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL = 'http://localhost:3000';
+  public BASE_URL = 'http://localhost:3000';
 
   httpOptions = {
     headers: new HttpHeaders({
