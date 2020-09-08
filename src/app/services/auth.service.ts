@@ -71,7 +71,7 @@ export class AuthService {
       );
   }
 
-  deleteProduct(id): Observable<any> {
+  deleteProduct(id: number): Observable<any> {
     const url = `${this.BASE_URL}/products`;
     return this.http.delete(`${this.BASE_URL}/` + 'products/' + id, this.httpOptions)
       .pipe(

@@ -20,8 +20,7 @@ export class AddProductComponent implements OnInit {
   addForm: FormGroup;
   constructor(private router: Router, private store: Store<AppState>) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
     const payload = {

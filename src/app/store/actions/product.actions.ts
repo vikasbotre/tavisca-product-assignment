@@ -44,7 +44,7 @@ export class DeleteProducts implements Action {
   constructor(public payload: number) { }
 }
 
-export class UpdateEditSuccess implements Action {
+export class UpdateProductSuccess implements Action {
   readonly type = UPDATE_PRODUCT_SUCCESS;
   constructor(public payload: Product) { }
 }
@@ -60,5 +60,5 @@ export type ProductActions =
   | AddSuccess
   | UpdateProducts
   | DeleteProducts
-  | UpdateEditSuccess
+  | UpdateProductSuccess
   | DeleteProductSuccess;

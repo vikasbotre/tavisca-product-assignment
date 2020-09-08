@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, from } from 'rxjs';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Product } from '../../models/product'
+import { Product } from '../../models/product';
 import { AppState, selectAuthState } from '../../store/app.states';
 import { LogOut } from '../../store/actions/auth.actions';
 
@@ -24,7 +24,7 @@ export class LandingComponent implements OnInit {
     this.getState = this.store.select(selectAuthState);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
@@ -33,11 +33,12 @@ export class LandingComponent implements OnInit {
 
     this.authService.getAllProducts()
       .subscribe(data => {
-        this.products = data
-      })
+        this.products = data;
+      });
   }
 
   logOut(): void {
+    // tslint:disable-next-line:new-parens
     this.store.dispatch(new LogOut);
   }
 

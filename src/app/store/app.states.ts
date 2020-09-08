@@ -5,7 +5,7 @@ import * as product from './reducers/product.reducers';
 export interface AppState {
   product: any;
   authState: auth.State;
-  productState: product.State
+  productState: product.State;
 }
 
 export const reducers = {

@@ -1,4 +1,5 @@
 import { Product } from '../../models/product';
+// tslint:disable-next-line:max-line-length
 import { LIST_PRODUCTS, LIST_DATA_SUCCESS, ProductActions, ADD_PRODUCTS, UPDATE_PRODUCTS, DELETE_PRODUCTS, DELETE_PRODUCT_SUCCESS, UPDATE_PRODUCT_SUCCESS } from '../actions/product.actions';
 
 export interface State {
@@ -11,6 +12,7 @@ const initialState: State = {
   user: null
 };
 
+// tslint:disable-next-line:typedef
 export function productReducer(
   state = initialState,
   action: ProductActions
@@ -32,7 +34,7 @@ export function productReducer(
     case ADD_PRODUCTS: {
       return {
         ...state
-      }
+      };
     }
     case UPDATE_PRODUCTS: {
       return {

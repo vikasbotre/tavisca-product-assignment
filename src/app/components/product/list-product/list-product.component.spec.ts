@@ -4,11 +4,13 @@ import { ListProductComponent } from './list-product.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from 'src/app/services/auth.service';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
 
 describe('ListProductComponent', () => {
   let component: ListProductComponent;
   let fixture: ComponentFixture<ListProductComponent>;
   let store: MockStore;
+  let authService: AuthService;
   const initialState = {
     isAuthenticated: false,
     user: null,
@@ -23,6 +25,7 @@ describe('ListProductComponent', () => {
     })
       .compileComponents();
     store = TestBed.inject(MockStore);
+    authService = TestBed.get(AuthService);
   });
 
   beforeEach(() => {

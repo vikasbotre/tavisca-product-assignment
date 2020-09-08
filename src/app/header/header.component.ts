@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  toggle() {
+  toggle(): void {
     this.showColor = !this.showColor;
     if (this.showColor) {
       this.renderer.setStyle(this.el.nativeElement.ownerDocument.body, 'backgroundColor', 'rgb(216 207 99 / 45%)');

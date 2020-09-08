@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, from } from 'rxjs';
-import { Router } from "@angular/router";
 import { User } from '../../models/user';
 import { AppState, selectAuthState } from '../../store/app.states';
 import { LogIn } from '../../store/actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
+import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
@@ -13,7 +13,6 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-
   user: User = new User();
   getState: Observable<any>;
   errorMessage: string | null;
@@ -24,11 +23,11 @@ export class LogInComponent implements OnInit {
     this.getState = this.store.select(selectAuthState);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getState.subscribe((state) => {
       this.errorMessage = state.errorMessage;
     });
-  };
+  }
 
   onSubmit(): void {
     // Check user registaer code

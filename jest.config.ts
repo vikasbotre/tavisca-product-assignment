@@ -1,47 +1,47 @@
 module.exports = {
 
-  preset: "jest-preset-angular",
+  preset: 'jest-preset-angular',
 
-  roots: ["./src"],
+  roots: ['./src'],
 
-  testMatch: ["**/+(*.)+(spec).+(ts)"],
+  testMatch: ['**/+(*.)+(spec).+(ts)'],
 
-  setupFilesAfterEnv: ["<rootDir>/src/setup-jest.ts"],
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
 
   transform: {
 
-    "^.+\\.(ts|js|html)$": "ts-jest",
+    '^.+\\.(ts|js|html)$': 'ts-jest',
 
   },
 
   testPathIgnorePatterns: [
 
-    "<rootDir>/node_modules/",
+    '<rootDir>/node_modules/',
 
-    "<rootDir>/dist/",
+    '<rootDir>/dist/',
 
-    "<rootDir>/cypress/",
+    '<rootDir>/cypress/',
 
-    "<rootDir>/src/test.ts",
+    '<rootDir>/src/test.ts',
 
-    "node_modules/(?!@ngrx|ngx-socket-io)",
+    'node_modules/(?!@ngrx|ngx-socket-io)',
 
   ],
 
-  "reporters": [
-    "default",
-    ["./node_modules/jest-html-reporter", {
-      "pageTitle": "Test Report"
+  reporters: [
+    'default',
+    ['./node_modules/jest-html-reporter', {
+      pageTitle: 'Test Report'
     }]
   ],
 
   collectCoverage: true,
 
-  coverageReporters: ["html"],
+  coverageReporters: ['html'],
 
   clearMocks: true,
 
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
 };
 

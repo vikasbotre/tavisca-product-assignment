@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -19,7 +19,7 @@ describe('LogInComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LogInComponent],
-      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule],
       providers: [provideMockStore({ initialState }), AuthService]
     })
       .compileComponents();
@@ -35,5 +35,4 @@ describe('LogInComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

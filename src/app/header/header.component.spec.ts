@@ -35,4 +35,16 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle', () => {
+    component.showColor = false;
+    component.toggle();
+    expect(component.showColor).toBe(true);
+  });
+  it('should toggle', () => {
+    component.showColor = true;
+    component.toggle();
+    expect(component.showColor).toBe(false);
+  });
+
 });
