@@ -33,9 +33,3 @@ export const Default = Template.bind({});
 Default.args = {
   user: {},
 };
-
-export const Authenticated = Template.bind({});
-Authenticated.args = {
-  user: {},
-  isAuthenticated: true,
-};

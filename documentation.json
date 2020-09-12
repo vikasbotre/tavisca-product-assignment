@@ -342,7 +342,7 @@
         },
         {
             "name": "AuthService",
-            "id": "injectable-AuthService-1301f115c5c02a83f8c97fb470569767",
+            "id": "injectable-AuthService-cb18fd4e43cc6dc0cd43f2a549391422",
             "file": "src/app/services/auth.service.ts",
             "properties": [
                 {
@@ -358,7 +358,7 @@
                 },
                 {
                     "name": "httpOptions",
-                    "defaultValue": "{\n    headers: new HttpHeaders({\n      'Content-Type': 'application/json',\n    }),\n  }",
+                    "defaultValue": "{\r\n    headers: new HttpHeaders({\r\n      'Content-Type': 'application/json',\r\n    }),\r\n  }",
                     "type": "object",
                     "optional": false,
                     "description": "",
@@ -612,7 +612,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable, throwError } from 'rxjs';\nimport { catchError } from 'rxjs/operators';\nimport { User } from '../models/user';\nimport { IProduct } from '../models/product';\nimport { environment } from '../../environments/environment';\n\n@Injectable()\nexport class AuthService {\n  public BASE_URL = environment.apiUrl;\n\n  httpOptions = {\n    headers: new HttpHeaders({\n      'Content-Type': 'application/json',\n    }),\n  };\n\n  constructor(private http: HttpClient) {}\n\n  getToken(): string {\n    return localStorage.getItem('token');\n  }\n\n  logIn(email: string, password: string): Observable<any> {\n    const url = `${this.BASE_URL}/login`;\n    return this.http\n      .post<User>(url, { email, password }, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  signUp(email: string, password: string): Observable<User> {\n    const url = `${this.BASE_URL}/register`;\n    return this.http\n      .post<User>(url, { email, password }, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  getSignUpData(): Observable<IProduct[]> {\n    const url = `${this.BASE_URL}/register`;\n    return this.http\n      .get<IProduct[]>(url, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  getAllProducts(): Observable<IProduct[]> {\n    const url = `${this.BASE_URL}/products`;\n    return this.http\n      .get<IProduct[]>(url, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  getProductById(id: number): Observable<IProduct> {\n    const url = `${this.BASE_URL}/products/`;\n    return this.http\n      .get<IProduct>(url + id, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  createProduct(\n    productName: string,\n    productNumber: number,\n    productCategory: string,\n    productPrice: number\n  ): Observable<IProduct> {\n    const url = `${this.BASE_URL}/products`;\n    return this.http\n      .post<IProduct>(\n        url,\n        { productName, productNumber, productCategory, productPrice },\n        this.httpOptions\n      )\n      .pipe(catchError(this.errorHandler));\n  }\n\n  deleteProduct(id: number): Observable<any> {\n    const url = `${this.BASE_URL}/products`;\n    return this.http\n      .delete(`${this.BASE_URL}/` + 'products/' + id, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  updateProduct(id, user): Observable<IProduct> {\n    const url = `${this.BASE_URL}/products/`;\n    return this.http\n      .put<IProduct>(url + id, user, this.httpOptions)\n      .pipe(catchError(this.errorHandler));\n  }\n\n  // tslint:disable-next-line:typedef\n  errorHandler(error) {\n    let errorMessage = '';\n    if (error.error instanceof ErrorEvent) {\n      // Get client-side error\n      errorMessage = error.error.message;\n    } else {\n      // Get server-side error\n      errorMessage = `Error Code: ${error.status}\\nMessage: ${error.message}`;\n    }\n    return throwError(errorMessage);\n  }\n}\n",
+            "sourceCode": "import { HttpClient, HttpHeaders } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable, throwError } from 'rxjs';\r\nimport { catchError } from 'rxjs/operators';\r\nimport { User } from '../models/user';\r\nimport { IProduct } from '../models/product';\r\nimport { environment } from '../../environments/environment';\r\n\r\n@Injectable()\r\nexport class AuthService {\r\n  public BASE_URL = environment.apiUrl;\r\n\r\n  httpOptions = {\r\n    headers: new HttpHeaders({\r\n      'Content-Type': 'application/json',\r\n    }),\r\n  };\r\n\r\n  constructor(private http: HttpClient) {}\r\n\r\n  getToken(): string {\r\n    return localStorage.getItem('token');\r\n  }\r\n\r\n  logIn(email: string, password: string): Observable<any> {\r\n    const url = `${this.BASE_URL}/login`;\r\n    return this.http\r\n      .post<User>(url, { email, password }, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  signUp(email: string, password: string): Observable<User> {\r\n    const url = `${this.BASE_URL}/register`;\r\n    return this.http\r\n      .post<User>(url, { email, password }, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  getSignUpData(): Observable<IProduct[]> {\r\n    const url = `${this.BASE_URL}/register`;\r\n    return this.http\r\n      .get<IProduct[]>(url, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  getAllProducts(): Observable<IProduct[]> {\r\n    const url = `${this.BASE_URL}/products`;\r\n    return this.http\r\n      .get<IProduct[]>(url, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  getProductById(id: number): Observable<IProduct> {\r\n    const url = `${this.BASE_URL}/products/`;\r\n    return this.http\r\n      .get<IProduct>(url + id, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  createProduct(\r\n    productName: string,\r\n    productNumber: number,\r\n    productCategory: string,\r\n    productPrice: number\r\n  ): Observable<IProduct> {\r\n    const url = `${this.BASE_URL}/products`;\r\n    return this.http\r\n      .post<IProduct>(\r\n        url,\r\n        { productName, productNumber, productCategory, productPrice },\r\n        this.httpOptions\r\n      )\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  deleteProduct(id: number): Observable<any> {\r\n    const url = `${this.BASE_URL}/products`;\r\n    return this.http\r\n      .delete(`${this.BASE_URL}/` + 'products/' + id, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  updateProduct(id, user): Observable<IProduct> {\r\n    const url = `${this.BASE_URL}/products/`;\r\n    return this.http\r\n      .put<IProduct>(url + id, user, this.httpOptions)\r\n      .pipe(catchError(this.errorHandler));\r\n  }\r\n\r\n  // tslint:disable-next-line:typedef\r\n  errorHandler(error) {\r\n    let errorMessage = '';\r\n    if (error.error instanceof ErrorEvent) {\r\n      // Get client-side error\r\n      errorMessage = error.error.message;\r\n    } else {\r\n      // Get server-side error\r\n      errorMessage = `Error Code: ${error.status}\\nMessage: ${error.message}`;\r\n    }\r\n    return throwError(errorMessage);\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1658,7 +1658,7 @@
     "components": [
         {
             "name": "AddProductComponent",
-            "id": "component-AddProductComponent-6447640351fb1654be3b10af2f21d013",
+            "id": "component-AddProductComponent-2bab9a820c606e439a3565f77ecc6eff",
             "file": "src/app/components/product/add-product/add-product.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1686,7 +1686,7 @@
                 },
                 {
                     "name": "product",
-                    "defaultValue": "{\n    productName: null,\n    productNumber: null,\n    productCategory: null,\n    productPrice: null,\n  }",
+                    "defaultValue": "{\r\n    productName: null,\r\n    productNumber: null,\r\n    productCategory: null,\r\n    productPrice: null,\r\n  }",
                     "type": "any",
                     "optional": false,
                     "description": "",
@@ -1716,7 +1716,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { AppState } from '../../../store/app.states';\nimport { Store } from '@ngrx/store';\nimport {\n  AddProducts,\n  ListProducts,\n} from '../../../store/actions/product.actions';\n\n@Component({\n  selector: 'app-add-product',\n  templateUrl: './add-product.component.html',\n  styleUrls: ['./add-product.component.scss'],\n})\nexport class AddProductComponent implements OnInit {\n  product: any = {\n    productName: null,\n    productNumber: null,\n    productCategory: null,\n    productPrice: null,\n  };\n  addForm: FormGroup;\n  constructor(private router: Router, private store: Store<AppState>) {}\n\n  ngOnInit(): void {}\n\n  onSubmit(): void {\n    const payload = {\n      productName: this.product.productName,\n      productNumber: this.product.productNumber,\n      productCategory: this.product.productCategory,\n      productPrice: this.product.productPrice,\n    };\n    this.store.dispatch(new AddProducts(payload));\n    this.store.dispatch(new ListProducts());\n    this.router.navigate(['/list-product']);\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { Router } from '@angular/router';\r\nimport { AppState } from '../../../store/app.states';\r\nimport { Store } from '@ngrx/store';\r\nimport {\r\n  AddProducts,\r\n  ListProducts,\r\n} from '../../../store/actions/product.actions';\r\n\r\n@Component({\r\n  selector: 'app-add-product',\r\n  templateUrl: './add-product.component.html',\r\n  styleUrls: ['./add-product.component.scss'],\r\n})\r\nexport class AddProductComponent implements OnInit {\r\n  product: any = {\r\n    productName: null,\r\n    productNumber: null,\r\n    productCategory: null,\r\n    productPrice: null,\r\n  };\r\n  addForm: FormGroup;\r\n  constructor(private router: Router, private store: Store<AppState>) {}\r\n\r\n  ngOnInit(): void {}\r\n\r\n  onSubmit(): void {\r\n    const payload = {\r\n      productName: this.product.productName,\r\n      productNumber: this.product.productNumber,\r\n      productCategory: this.product.productCategory,\r\n      productPrice: this.product.productPrice,\r\n    };\r\n    this.store.dispatch(new AddProducts(payload));\r\n    this.store.dispatch(new ListProducts());\r\n    this.router.navigate(['/list-product']);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1763,7 +1763,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-1e4d379814e998ba784513d6a2cf232e",
+            "id": "component-AppComponent-66150ead7362968e57fc9dccaa5c4268",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1788,7 +1788,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss'],\r\n})\r\nexport class AppComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1801,7 +1801,7 @@
         },
         {
             "name": "EditProductComponent",
-            "id": "component-EditProductComponent-33d6fc24a25b520b31635553054d221e",
+            "id": "component-EditProductComponent-755a1070fa596603132c3d9c47b691b9",
             "file": "src/app/components/product/edit-product/edit-product.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1879,7 +1879,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { FormBuilder, FormGroup } from '@angular/forms';\nimport { Store } from '@ngrx/store';\nimport { AuthService } from '../../../services/auth.service';\nimport { IProduct } from '../../../models/product';\nimport { Observable } from 'rxjs';\nimport { AppState, selectMusicState } from '../../../store/app.states';\nimport {\n  ListProducts,\n  UpdateProducts,\n} from '../../../store/actions/product.actions';\n\n@Component({\n  selector: 'app-edit-product',\n  templateUrl: './edit-product.component.html',\n  styleUrls: ['./edit-product.component.scss'],\n})\nexport class EditProductComponent implements OnInit {\n  errorMessage: string | null;\n  editform: FormGroup;\n  id: number;\n  getState: Observable<any>;\n  product: IProduct;\n\n  constructor(\n    private authService: AuthService,\n    private route: ActivatedRoute,\n    private fbs: FormBuilder,\n    private store: Store<AppState>,\n    private router: Router\n  ) {\n    this.getState = this.store.select(selectMusicState);\n  }\n\n  ngOnInit(): void {\n    this.id = this.route.snapshot.params.productId;\n    this.authService.getProductById(this.id).subscribe((data: IProduct) => {\n      this.product = data;\n    });\n\n    this.editform = this.fbs.group({\n      productName: [''],\n      productNumber: [''],\n      productCategory: [''],\n      productPrice: [''],\n    });\n\n    this.authService.getProductById(this.id).subscribe((data) => {\n      this.editform.setValue(data);\n    });\n  }\n\n  submit(): void {\n    const payload = {\n      index: this.id,\n      newProduct: this.editform.value,\n    };\n    this.store.dispatch(new UpdateProducts(payload));\n    this.store.dispatch(new ListProducts());\n    this.router.navigateByUrl('/list-product');\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { ActivatedRoute, Router } from '@angular/router';\r\nimport { FormBuilder, FormGroup } from '@angular/forms';\r\nimport { Store } from '@ngrx/store';\r\nimport { AuthService } from '../../../services/auth.service';\r\nimport { IProduct } from '../../../models/product';\r\nimport { Observable } from 'rxjs';\r\nimport { AppState, selectMusicState } from '../../../store/app.states';\r\nimport {\r\n  ListProducts,\r\n  UpdateProducts,\r\n} from '../../../store/actions/product.actions';\r\n\r\n@Component({\r\n  selector: 'app-edit-product',\r\n  templateUrl: './edit-product.component.html',\r\n  styleUrls: ['./edit-product.component.scss'],\r\n})\r\nexport class EditProductComponent implements OnInit {\r\n  errorMessage: string | null;\r\n  editform: FormGroup;\r\n  id: number;\r\n  getState: Observable<any>;\r\n  product: IProduct;\r\n\r\n  constructor(\r\n    private authService: AuthService,\r\n    private route: ActivatedRoute,\r\n    private fbs: FormBuilder,\r\n    private store: Store<AppState>,\r\n    private router: Router\r\n  ) {\r\n    this.getState = this.store.select(selectMusicState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.id = this.route.snapshot.params.productId;\r\n    this.authService.getProductById(this.id).subscribe((data: IProduct) => {\r\n      this.product = data;\r\n    });\r\n\r\n    this.editform = this.fbs.group({\r\n      productName: [''],\r\n      productNumber: [''],\r\n      productCategory: [''],\r\n      productPrice: [''],\r\n    });\r\n\r\n    this.authService.getProductById(this.id).subscribe((data) => {\r\n      this.editform.setValue(data);\r\n    });\r\n  }\r\n\r\n  submit(): void {\r\n    const payload = {\r\n      index: this.id,\r\n      newProduct: this.editform.value,\r\n    };\r\n    this.store.dispatch(new UpdateProducts(payload));\r\n    this.store.dispatch(new ListProducts());\r\n    this.router.navigateByUrl('/list-product');\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1959,7 +1959,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-22e62a2677a6c18d9dbe01ea175fb4c6",
+            "id": "component-HeaderComponent-97811a820ac1302d682614ecb39314e4",
             "file": "src/app/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2060,7 +2060,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { AppState, selectAuthState } from '../store/app.states';\nimport { Observable } from 'rxjs';\nimport { LogOut } from '../store/actions/auth.actions';\n\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent implements OnInit {\n  editMode = false;\n  errorMessage = null;\n  getState: Observable<any>;\n  isAuthenticated = false;\n  showColor = false;\n  user = null;\n\n  constructor(\n    private el: ElementRef,\n    private renderer: Renderer2,\n    private router: Router,\n    private store: Store<AppState>\n  ) {\n    this.getState = this.store.select(selectAuthState);\n  }\n\n  ngOnInit(): void {\n    this.editMode = true;\n    this.getState.subscribe((state) => {\n      this.isAuthenticated = state.isAuthenticated;\n      this.user = state.user;\n      this.errorMessage = state.errorMessage;\n    });\n  }\n\n  toggle(): void {\n    this.showColor = !this.showColor;\n    if (this.showColor) {\n      this.renderer.setStyle(\n        this.el.nativeElement.ownerDocument.body,\n        'backgroundColor',\n        'rgb(216 207 99 / 45%)'\n      );\n    } else {\n      this.renderer.setStyle(\n        this.el.nativeElement.ownerDocument.body,\n        'backgroundColor',\n        'rgb(195 202 218 / 59%)'\n      );\n    }\n  }\n\n  public logOut(): void {\n    this.store.dispatch(new LogOut());\n    this.router.navigate(['/log-in']);\n  }\n}\n",
+            "sourceCode": "import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { Store } from '@ngrx/store';\r\nimport { AppState, selectAuthState } from '../store/app.states';\r\nimport { Observable } from 'rxjs';\r\nimport { LogOut } from '../store/actions/auth.actions';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss'],\r\n})\r\nexport class HeaderComponent implements OnInit {\r\n  editMode = false;\r\n  errorMessage = null;\r\n  getState: Observable<any>;\r\n  isAuthenticated = false;\r\n  showColor = false;\r\n  user = null;\r\n\r\n  constructor(\r\n    private el: ElementRef,\r\n    private renderer: Renderer2,\r\n    private router: Router,\r\n    private store: Store<AppState>\r\n  ) {\r\n    this.getState = this.store.select(selectAuthState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.editMode = true;\r\n    this.getState.subscribe((state) => {\r\n      this.isAuthenticated = state.isAuthenticated;\r\n      this.user = state.user;\r\n      this.errorMessage = state.errorMessage;\r\n    });\r\n  }\r\n\r\n  toggle(): void {\r\n    this.showColor = !this.showColor;\r\n    if (this.showColor) {\r\n      this.renderer.setStyle(\r\n        this.el.nativeElement.ownerDocument.body,\r\n        'backgroundColor',\r\n        'rgb(216 207 99 / 45%)'\r\n      );\r\n    } else {\r\n      this.renderer.setStyle(\r\n        this.el.nativeElement.ownerDocument.body,\r\n        'backgroundColor',\r\n        'rgb(195 202 218 / 59%)'\r\n      );\r\n    }\r\n  }\r\n\r\n  public logOut(): void {\r\n    this.store.dispatch(new LogOut());\r\n    this.router.navigate(['/log-in']);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2129,7 +2129,7 @@
         },
         {
             "name": "LandingComponent",
-            "id": "component-LandingComponent-c26bf742a2bc9db3baec56d8d71fbf7e",
+            "id": "component-LandingComponent-5bc0d9c094d1b42e2d37d202988badd5",
             "file": "src/app/components/landing/landing.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2209,7 +2209,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { AuthService } from '../../services/auth.service';\nimport { IProduct } from '../../models/product';\nimport { AppState, selectAuthState } from '../../store/app.states';\nimport { LogOut } from '../../store/actions/auth.actions';\n\n@Component({\n  selector: 'app-landing',\n  templateUrl: './landing.component.html',\n  styleUrls: ['./landing.component.scss'],\n})\nexport class LandingComponent implements OnInit {\n  errorMessage = null;\n  getState: Observable<any>;\n  isAuthenticated: false;\n  products: IProduct[];\n  user = null;\n\n  constructor(\n    private authService: AuthService,\n    private store: Store<AppState>\n  ) {\n    this.getState = this.store.select(selectAuthState);\n  }\n\n  ngOnInit(): void {\n    this.getState.subscribe((state) => {\n      this.isAuthenticated = state.isAuthenticated;\n      this.user = state.user;\n      this.errorMessage = state.errorMessage;\n    });\n\n    this.authService.getAllProducts().subscribe((data) => {\n      this.products = data;\n    });\n  }\n\n  logOut(): void {\n    // tslint:disable-next-line:new-parens\n    this.store.dispatch(new LogOut());\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { Store } from '@ngrx/store';\r\nimport { Observable } from 'rxjs';\r\nimport { AuthService } from '../../services/auth.service';\r\nimport { IProduct } from '../../models/product';\r\nimport { AppState, selectAuthState } from '../../store/app.states';\r\nimport { LogOut } from '../../store/actions/auth.actions';\r\n\r\n@Component({\r\n  selector: 'app-landing',\r\n  templateUrl: './landing.component.html',\r\n  styleUrls: ['./landing.component.scss'],\r\n})\r\nexport class LandingComponent implements OnInit {\r\n  errorMessage = null;\r\n  getState: Observable<any>;\r\n  isAuthenticated: false;\r\n  products: IProduct[];\r\n  user = null;\r\n\r\n  constructor(\r\n    private authService: AuthService,\r\n    private store: Store<AppState>\r\n  ) {\r\n    this.getState = this.store.select(selectAuthState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getState.subscribe((state) => {\r\n      this.isAuthenticated = state.isAuthenticated;\r\n      this.user = state.user;\r\n      this.errorMessage = state.errorMessage;\r\n    });\r\n\r\n    this.authService.getAllProducts().subscribe((data) => {\r\n      this.products = data;\r\n    });\r\n  }\r\n\r\n  logOut(): void {\r\n    // tslint:disable-next-line:new-parens\r\n    this.store.dispatch(new LogOut());\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2256,7 +2256,7 @@
         },
         {
             "name": "ListProductComponent",
-            "id": "component-ListProductComponent-157a0fc15f57db80185299a8cb70cedf",
+            "id": "component-ListProductComponent-c212d3ca35616e98d070ae9bc99c7869",
             "file": "src/app/components/product/list-product/list-product.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2350,7 +2350,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { AuthService } from '../../../services/auth.service';\nimport { AppState, selectMusicState } from '../../../store/app.states';\nimport { Store } from '@ngrx/store';\nimport { ListProducts } from '../../../store/actions/product.actions';\nimport { Observable } from 'rxjs';\n\n@Component({\n  selector: 'app-list-product',\n  templateUrl: './list-product.component.html',\n  styleUrls: ['./list-product.component.scss'],\n})\nexport class ListProductComponent implements OnInit {\n  errorMessage: string | null;\n  getState: Observable<any>;\n  isUpdateActivated = false;\n  products: any;\n\n  constructor(\n    private authService: AuthService,\n    private store: Store<AppState>\n  ) {\n    this.getState = this.store.select(selectMusicState);\n  }\n  showUpdateForm(): void {\n    this.isUpdateActivated = true;\n  }\n\n  ngOnInit(): void {\n    this.store.dispatch(new ListProducts());\n    this.store.subscribe((data) => {\n      this.products = data.product.products;\n    });\n  }\n\n  deleteMusic(id: number): void {\n    this.authService.deleteProduct(id).subscribe((res) => {\n      this.products = this.products.filter((item) => item.id !== id);\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { AuthService } from '../../../services/auth.service';\r\nimport { AppState, selectMusicState } from '../../../store/app.states';\r\nimport { Store } from '@ngrx/store';\r\nimport { ListProducts } from '../../../store/actions/product.actions';\r\nimport { Observable } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'app-list-product',\r\n  templateUrl: './list-product.component.html',\r\n  styleUrls: ['./list-product.component.scss'],\r\n})\r\nexport class ListProductComponent implements OnInit {\r\n  errorMessage: string | null;\r\n  getState: Observable<any>;\r\n  isUpdateActivated = false;\r\n  products: any;\r\n\r\n  constructor(\r\n    private authService: AuthService,\r\n    private store: Store<AppState>\r\n  ) {\r\n    this.getState = this.store.select(selectMusicState);\r\n  }\r\n  showUpdateForm(): void {\r\n    this.isUpdateActivated = true;\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.store.dispatch(new ListProducts());\r\n    this.store.subscribe((data) => {\r\n      this.products = data.product.products;\r\n    });\r\n  }\r\n\r\n  deleteMusic(id: number): void {\r\n    this.authService.deleteProduct(id).subscribe((res) => {\r\n      this.products = this.products.filter((item) => item.id !== id);\r\n    });\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2397,7 +2397,7 @@
         },
         {
             "name": "LogInComponent",
-            "id": "component-LogInComponent-9ff8518bee3f251b4bbd686d61c8d560",
+            "id": "component-LogInComponent-f6bde92c1d06f07e3172f3a578019a96",
             "file": "src/app/components/log-in/log-in.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2477,7 +2477,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { User } from '../../models/user';\nimport { AppState, selectAuthState } from '../../store/app.states';\nimport { LogIn } from '../../store/actions/auth.actions';\nimport { AuthService } from '../../services/auth.service';\n\n@Component({\n  selector: 'app-log-in',\n  templateUrl: './log-in.component.html',\n  styleUrls: ['./log-in.component.scss'],\n})\nexport class LogInComponent implements OnInit {\n  allSignupData: any;\n  errorMessage: string | null;\n  incorrectError = false;\n  getState: Observable<any>;\n  user: User = new User();\n\n  constructor(\n    private authService: AuthService,\n    private store: Store<AppState>\n  ) {\n    this.getState = this.store.select(selectAuthState);\n  }\n\n  ngOnInit(): void {\n    this.getState.subscribe((state) => {\n      this.errorMessage = state.errorMessage;\n    });\n  }\n\n  onSubmit(): void {\n    // Check user registaer code\n    this.authService.getSignUpData().subscribe((response) => {\n      this.allSignupData = response;\n      // checks whether an element is even\n      const even = (item: any) =>\n        this.user.email === item.email && this.user.password === item.password;\n      if (this.allSignupData.some(even) === true) {\n        const payload = {\n          email: this.user.email,\n          password: this.user.password,\n        };\n        this.store.dispatch(new LogIn(payload));\n      } else {\n        this.incorrectError = true;\n        setTimeout(() => {\n          this.incorrectError = false;\n        }, 3000);\n      }\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { Store } from '@ngrx/store';\r\nimport { Observable } from 'rxjs';\r\nimport { User } from '../../models/user';\r\nimport { AppState, selectAuthState } from '../../store/app.states';\r\nimport { LogIn } from '../../store/actions/auth.actions';\r\nimport { AuthService } from '../../services/auth.service';\r\n\r\n@Component({\r\n  selector: 'app-log-in',\r\n  templateUrl: './log-in.component.html',\r\n  styleUrls: ['./log-in.component.scss'],\r\n})\r\nexport class LogInComponent implements OnInit {\r\n  allSignupData: any;\r\n  errorMessage: string | null;\r\n  incorrectError = false;\r\n  getState: Observable<any>;\r\n  user: User = new User();\r\n\r\n  constructor(\r\n    private authService: AuthService,\r\n    private store: Store<AppState>\r\n  ) {\r\n    this.getState = this.store.select(selectAuthState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getState.subscribe((state) => {\r\n      this.errorMessage = state.errorMessage;\r\n    });\r\n  }\r\n\r\n  onSubmit(): void {\r\n    // Check user registaer code\r\n    this.authService.getSignUpData().subscribe((response) => {\r\n      this.allSignupData = response;\r\n      // checks whether an element is even\r\n      const even = (item: any) =>\r\n        this.user.email === item.email && this.user.password === item.password;\r\n      if (this.allSignupData.some(even) === true) {\r\n        const payload = {\r\n          email: this.user.email,\r\n          password: this.user.password,\r\n        };\r\n        this.store.dispatch(new LogIn(payload));\r\n      } else {\r\n        this.incorrectError = true;\r\n        setTimeout(() => {\r\n          this.incorrectError = false;\r\n        }, 3000);\r\n      }\r\n    });\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2524,7 +2524,7 @@
         },
         {
             "name": "SignUpComponent",
-            "id": "component-SignUpComponent-51329125e50c4d3c12f14f5413e23096",
+            "id": "component-SignUpComponent-b1da4620ba75e52f398baaf0450cc09b",
             "file": "src/app/components/sign-up/sign-up.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2589,7 +2589,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { User } from '../../models/user';\nimport { AppState, selectAuthState } from '../../store/app.states';\nimport { SignUp } from '../../store/actions/auth.actions';\n\n@Component({\n  selector: 'app-sign-up',\n  templateUrl: './sign-up.component.html',\n  styleUrls: ['./sign-up.component.scss'],\n})\nexport class SignUpComponent implements OnInit {\n  getState: Observable<any>;\n  errorMessage: string | null;\n  user: User = new User();\n\n  constructor(private store: Store<AppState>) {\n    this.getState = this.store.select(selectAuthState);\n  }\n\n  ngOnInit(): void {\n    this.getState.subscribe((state) => {\n      this.errorMessage = state.errorMessage;\n    });\n  }\n\n  onSubmit(): void {\n    const payload = {\n      email: this.user.email,\n      password: this.user.password,\n    };\n    this.store.dispatch(new SignUp(payload));\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { Store } from '@ngrx/store';\r\nimport { Observable } from 'rxjs';\r\nimport { User } from '../../models/user';\r\nimport { AppState, selectAuthState } from '../../store/app.states';\r\nimport { SignUp } from '../../store/actions/auth.actions';\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  templateUrl: './sign-up.component.html',\r\n  styleUrls: ['./sign-up.component.scss'],\r\n})\r\nexport class SignUpComponent implements OnInit {\r\n  getState: Observable<any>;\r\n  errorMessage: string | null;\r\n  user: User = new User();\r\n\r\n  constructor(private store: Store<AppState>) {\r\n    this.getState = this.store.select(selectAuthState);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.getState.subscribe((state) => {\r\n      this.errorMessage = state.errorMessage;\r\n    });\r\n  }\r\n\r\n  onSubmit(): void {\r\n    const payload = {\r\n      email: this.user.email,\r\n      password: this.user.password,\r\n    };\r\n    this.store.dispatch(new SignUp(payload));\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2800,7 +2800,7 @@
                 "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  apiUrl: 'http://localhost:3000',\n  production: false,\n}"
+                "defaultValue": "{\r\n  apiUrl: 'http://localhost:3000',\r\n  production: false,\r\n}"
             },
             {
                 "name": "initialState",
@@ -2872,7 +2872,7 @@
                 "subtype": "variable",
                 "file": "src/app/app.stories.ts",
                 "type": "Story<AppComponent>",
-                "defaultValue": "(args: AppComponent) => ({\r\n  component: AppComponent,\r\n  moduleMetadata: {\r\n    declarations: [\r\n      AppComponent,\r\n      LandingComponent,\r\n      SignUpComponent,\r\n      LogInComponent,\r\n      HeaderComponent,\r\n      AddProductComponent,\r\n      EditProductComponent,\r\n      ListProductComponent,\r\n    ],\r\n    imports: [\r\n      BrowserModule,\r\n      FormsModule,\r\n      ReactiveFormsModule,\r\n      CommonModule,\r\n      HttpClientModule,\r\n      StoreModule.forRoot(reducers, {}),\r\n      EffectsModule.forRoot([]),\r\n      EffectsModule.forFeature([AuthEffects, ProductEffects]),\r\n      RouterModule.forRoot([\r\n        { path: 'log-in', component: LogInComponent },\r\n        { path: 'sign-up', component: SignUpComponent },\r\n        { path: '', component: LandingComponent },\r\n        { path: 'add-product', component: AddProductComponent },\r\n        { path: 'list-product', component: ListProductComponent },\r\n        { path: 'edit-product/:productId', component: EditProductComponent },\r\n        { path: '**', redirectTo: '/' },\r\n      ]),\r\n    ],\r\n    providers: [Store, AuthService, { provide: APP_BASE_HREF, useValue: '/' }],\r\n    schemas: [CUSTOM_ELEMENTS_SCHEMA],\r\n  },\r\n  props: { args },\r\n})"
+                "defaultValue": "(args: AppComponent) => ({\r\n  component: AppComponent,\r\n  moduleMetadata: {\r\n    declarations: [\r\n      AppComponent,\r\n      LandingComponent,\r\n      SignUpComponent,\r\n      LogInComponent,\r\n      HeaderComponent,\r\n      AddProductComponent,\r\n      EditProductComponent,\r\n      ListProductComponent,\r\n    ],\r\n    imports: [\r\n      BrowserModule,\r\n      CommonModule,\r\n      FormsModule,\r\n      EffectsModule.forRoot([]),\r\n      EffectsModule.forFeature([AuthEffects, ProductEffects]),\r\n      HttpClientModule,\r\n      ReactiveFormsModule,\r\n      RouterModule.forRoot([\r\n        { path: 'log-in', component: LogInComponent },\r\n        { path: 'sign-up', component: SignUpComponent },\r\n        { path: '', component: LandingComponent },\r\n        { path: 'add-product', component: AddProductComponent },\r\n        { path: 'list-product', component: ListProductComponent },\r\n        { path: 'edit-product/:productId', component: EditProductComponent },\r\n        { path: '**', redirectTo: '/' },\r\n      ]),\r\n      StoreModule.forRoot(reducers, {}),\r\n    ],\r\n    providers: [Store, AuthService, { provide: APP_BASE_HREF, useValue: '/' }],\r\n    schemas: [CUSTOM_ELEMENTS_SCHEMA],\r\n  },\r\n  props: { args },\r\n})"
             },
             {
                 "name": "Template",
@@ -3153,7 +3153,7 @@
                     "subtype": "variable",
                     "file": "src/app/app.stories.ts",
                     "type": "Story<AppComponent>",
-                    "defaultValue": "(args: AppComponent) => ({\r\n  component: AppComponent,\r\n  moduleMetadata: {\r\n    declarations: [\r\n      AppComponent,\r\n      LandingComponent,\r\n      SignUpComponent,\r\n      LogInComponent,\r\n      HeaderComponent,\r\n      AddProductComponent,\r\n      EditProductComponent,\r\n      ListProductComponent,\r\n    ],\r\n    imports: [\r\n      BrowserModule,\r\n      FormsModule,\r\n      ReactiveFormsModule,\r\n      CommonModule,\r\n      HttpClientModule,\r\n      StoreModule.forRoot(reducers, {}),\r\n      EffectsModule.forRoot([]),\r\n      EffectsModule.forFeature([AuthEffects, ProductEffects]),\r\n      RouterModule.forRoot([\r\n        { path: 'log-in', component: LogInComponent },\r\n        { path: 'sign-up', component: SignUpComponent },\r\n        { path: '', component: LandingComponent },\r\n        { path: 'add-product', component: AddProductComponent },\r\n        { path: 'list-product', component: ListProductComponent },\r\n        { path: 'edit-product/:productId', component: EditProductComponent },\r\n        { path: '**', redirectTo: '/' },\r\n      ]),\r\n    ],\r\n    providers: [Store, AuthService, { provide: APP_BASE_HREF, useValue: '/' }],\r\n    schemas: [CUSTOM_ELEMENTS_SCHEMA],\r\n  },\r\n  props: { args },\r\n})"
+                    "defaultValue": "(args: AppComponent) => ({\r\n  component: AppComponent,\r\n  moduleMetadata: {\r\n    declarations: [\r\n      AppComponent,\r\n      LandingComponent,\r\n      SignUpComponent,\r\n      LogInComponent,\r\n      HeaderComponent,\r\n      AddProductComponent,\r\n      EditProductComponent,\r\n      ListProductComponent,\r\n    ],\r\n    imports: [\r\n      BrowserModule,\r\n      CommonModule,\r\n      FormsModule,\r\n      EffectsModule.forRoot([]),\r\n      EffectsModule.forFeature([AuthEffects, ProductEffects]),\r\n      HttpClientModule,\r\n      ReactiveFormsModule,\r\n      RouterModule.forRoot([\r\n        { path: 'log-in', component: LogInComponent },\r\n        { path: 'sign-up', component: SignUpComponent },\r\n        { path: '', component: LandingComponent },\r\n        { path: 'add-product', component: AddProductComponent },\r\n        { path: 'list-product', component: ListProductComponent },\r\n        { path: 'edit-product/:productId', component: EditProductComponent },\r\n        { path: '**', redirectTo: '/' },\r\n      ]),\r\n      StoreModule.forRoot(reducers, {}),\r\n    ],\r\n    providers: [Store, AuthService, { provide: APP_BASE_HREF, useValue: '/' }],\r\n    schemas: [CUSTOM_ELEMENTS_SCHEMA],\r\n  },\r\n  props: { args },\r\n})"
                 }
             ],
             "src/app/header/Header.stories.ts": [
@@ -3299,7 +3299,7 @@
                     "subtype": "variable",
                     "file": "src/environments/environment.ts",
                     "type": "object",
-                    "defaultValue": "{\n  apiUrl: 'http://localhost:3000',\n  production: false,\n}"
+                    "defaultValue": "{\r\n  apiUrl: 'http://localhost:3000',\r\n  production: false,\r\n}"
                 }
             ],
             "src/app/store/reducers/auth.reducers.ts": [

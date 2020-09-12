@@ -30,9 +30,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.editMode = true;
     this.getState.subscribe((state) => {
-      if (state.isAuthenticated) {
-        this.isAuthenticated = state.isAuthenticated;
-      }
+      this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.errorMessage = state.errorMessage;
     });

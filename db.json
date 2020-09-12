@@ -169,6 +169,16 @@
       "email": "vikasbotre1992@gmail.com",
       "password": "vikas1992",
       "id": "6n6PGpo"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "99D-OIN"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "r2KRQ4a"
     }
   ],
   "register": [
@@ -186,7 +196,7 @@
   ],
   "products": [
     {
-      "productName": "T-Shirt 990 BLUES",
+      "productName": "T-Shirt 990 BLUE",
       "productNumber": 1244,
       "productCategory": "Sports \\ T-Shirts",
       "productPrice": 160,
