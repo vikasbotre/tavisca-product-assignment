@@ -4,25 +4,29 @@ import { AddProductComponent } from './add-product.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from 'src/app/services/auth.service';
-import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 describe('AddProductComponent', () => {
   let component: AddProductComponent;
   let fixture: ComponentFixture<AddProductComponent>;
   let store: MockStore;
   const initialState = {
+    errorMessage: null,
     isAuthenticated: false,
     user: null,
-    errorMessage: null
   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AddProductComponent],
-      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
-      providers: [provideMockStore({ initialState }), AuthService],
-    })
-      .compileComponents();
+      imports: [
+        HttpClientTestingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+      ],
+      providers: [AuthService, provideMockStore({ initialState })],
+    }).compileComponents();
     store = TestBed.inject(MockStore);
   });
 

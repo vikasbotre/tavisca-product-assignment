@@ -8,13 +8,12 @@ import { SignUp } from '../../store/actions/auth.actions';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-
-  user: User = new User();
   getState: Observable<any>;
   errorMessage: string | null;
+  user: User = new User();
 
   constructor(private store: Store<AppState>) {
     this.getState = this.store.select(selectAuthState);
@@ -29,9 +28,8 @@ export class SignUpComponent implements OnInit {
   onSubmit(): void {
     const payload = {
       email: this.user.email,
-      password: this.user.password
+      password: this.user.password,
     };
     this.store.dispatch(new SignUp(payload));
   }
-
 }

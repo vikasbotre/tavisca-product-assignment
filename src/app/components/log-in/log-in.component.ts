@@ -1,25 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { AppState, selectAuthState } from '../../store/app.states';
 import { LogIn } from '../../store/actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
-import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss']
+  styleUrls: ['./log-in.component.scss'],
 })
 export class LogInComponent implements OnInit {
-  user: User = new User();
-  getState: Observable<any>;
-  errorMessage: string | null;
   allSignupData: any;
+  errorMessage: string | null;
   incorrectError = false;
+  getState: Observable<any>;
+  user: User = new User();
 
-  constructor(private store: Store<AppState>, private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private store: Store<AppState>
+  ) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -34,11 +36,12 @@ export class LogInComponent implements OnInit {
     this.authService.getSignUpData().subscribe((response) => {
       this.allSignupData = response;
       // checks whether an element is even
-      const even = (item: any) => this.user.email === item.email && this.user.password === item.password;
+      const even = (item: any) =>
+        this.user.email === item.email && this.user.password === item.password;
       if (this.allSignupData.some(even) === true) {
         const payload = {
           email: this.user.email,
-          password: this.user.password
+          password: this.user.password,
         };
         this.store.dispatch(new LogIn(payload));
       } else {

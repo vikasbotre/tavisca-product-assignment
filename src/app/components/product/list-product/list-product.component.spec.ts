@@ -2,19 +2,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ListProductComponent } from './list-product.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { of } from 'rxjs';
 
 describe('ListProductComponent', () => {
+  // let authService: AuthService;
   let component: ListProductComponent;
   let fixture: ComponentFixture<ListProductComponent>;
   let store: MockStore;
-  let authService: AuthService;
+
   const initialState = {
+    errorMessage: null,
     isAuthenticated: false,
     user: null,
-    errorMessage: null
   };
 
   beforeEach(async () => {
@@ -22,10 +22,10 @@ describe('ListProductComponent', () => {
       declarations: [ListProductComponent],
       imports: [RouterTestingModule, HttpClientTestingModule],
       providers: [provideMockStore({ initialState }), AuthService],
-    })
-      .compileComponents();
+    }).compileComponents();
     store = TestBed.inject(MockStore);
-    authService = TestBed.get(AuthService);
+    // tslint:disable-next-line: deprecation
+    // authService = TestBed.get(AuthService);
   });
 
   beforeEach(() => {

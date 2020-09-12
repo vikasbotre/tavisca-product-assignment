@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +20,6 @@ import { AddProductComponent } from './components/product/add-product/add-produc
 import { EditProductComponent } from './components/product/edit-product/edit-product.component';
 import { ListProductComponent } from './components/product/list-product/list-product.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +29,7 @@ import { ListProductComponent } from './components/product/list-product/list-pro
     HeaderComponent,
     AddProductComponent,
     EditProductComponent,
-    ListProductComponent
+    ListProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,10 +47,11 @@ import { ListProductComponent } from './components/product/list-product/list-pro
       { path: 'add-product', component: AddProductComponent },
       { path: 'list-product', component: ListProductComponent },
       { path: 'edit-product/:productId', component: EditProductComponent },
-      { path: '**', redirectTo: '/' }
-    ])
+      { path: '**', redirectTo: '/' },
+    ]),
   ],
   providers: [Store, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

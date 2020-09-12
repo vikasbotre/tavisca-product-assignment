@@ -1,14 +1,13 @@
 import { Action } from '@ngrx/store';
-import { Product } from '../../models/product';
+import { IProduct } from '../../models/product';
 
-
-export const LIST_PRODUCTS = '[Products] List Fetch';
 export const ADD_PRODUCTS = '[Products] Add Product';
 export const ADD_DATA_SUCCESS = '[Products] Add Success';
-export const UPDATE_PRODUCTS = '[Products] Update Recipe';
 export const DELETE_PRODUCTS = '[Products] Delete Recipe';
-export const LIST_DATA_SUCCESS = '[Products] List Success';
 export const DELETE_PRODUCT_SUCCESS = '[Products] Delete product success';
+export const LIST_PRODUCTS = '[Products] List Fetch';
+export const LIST_DATA_SUCCESS = '[Products] List Success';
+export const UPDATE_PRODUCTS = '[Products] Update Recipe';
 export const UPDATE_PRODUCT_SUCCESS = '[Products] Update product success';
 
 export class ListProducts implements Action {
@@ -21,32 +20,32 @@ export class ListProducts implements Action {
 
 export class ListDataSucess implements Action {
   readonly type = LIST_DATA_SUCCESS;
-  constructor(public payload: Product[]) { }
+  constructor(public payload: IProduct[]) {}
 }
 
 export class AddProducts implements Action {
   readonly type = ADD_PRODUCTS;
-  constructor(public payload: any) { }
+  constructor(public payload: any) {}
 }
 
 export class AddSuccess implements Action {
   readonly type = ADD_DATA_SUCCESS;
-  constructor(public payload: any) { }
+  constructor(public payload: any) {}
 }
 
 export class UpdateProducts implements Action {
   readonly type = UPDATE_PRODUCTS;
-  constructor(public payload: { index: number; newProduct: Product }) { }
+  constructor(public payload: { index: number; newProduct: IProduct }) {}
 }
 
 export class DeleteProducts implements Action {
   readonly type = DELETE_PRODUCTS;
-  constructor(public payload: number) { }
+  constructor(public payload: number) {}
 }
 
 export class UpdateProductSuccess implements Action {
   readonly type = UPDATE_PRODUCT_SUCCESS;
-  constructor(public payload: Product) { }
+  constructor(public payload: IProduct) {}
 }
 
 export class DeleteProductSuccess implements Action {

@@ -134,6 +134,41 @@
       "email": "vikasbotre1992@gmail.com",
       "password": "vikas1992",
       "id": "D8gnjao"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "FhuxQr_"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "bcz9wbP"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "rPnfWB-"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "nsPZJ7z"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "2pCIDYc"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "Ljg7ozR"
+    },
+    {
+      "email": "vikasbotre1992@gmail.com",
+      "password": "vikas1992",
+      "id": "6n6PGpo"
     }
   ],
   "register": [
@@ -151,7 +186,7 @@
   ],
   "products": [
     {
-      "productName": "T-Shirt 990 BLUE",
+      "productName": "T-Shirt 990 BLUES",
       "productNumber": 1244,
       "productCategory": "Sports \\ T-Shirts",
       "productPrice": 160,
@@ -177,6 +212,13 @@
       "productCategory": "Sports \\ T-Shirts",
       "productPrice": 1555,
       "id": 4
+    },
+    {
+      "productName": "T-Shirt 990 GN",
+      "productNumber": 14566,
+      "productCategory": "Sports \\ T-Shirts",
+      "productPrice": 78862,
+      "id": 5
     }
   ]
 }

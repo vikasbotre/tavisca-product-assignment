@@ -1,29 +1,28 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
   let store: MockStore;
   const initialState = {
+    errorMessage: null,
     isAuthenticated: false,
     user: null,
-    errorMessage: null
   };
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [SignUpComponent],
       imports: [FormsModule, ReactiveFormsModule, RouterTestingModule],
-      providers: [provideMockStore({ initialState }), AuthService],
-    })
-      .compileComponents();
+      providers: [AuthService, provideMockStore({ initialState })],
+    }).compileComponents();
     store = TestBed.inject(MockStore);
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SignUpComponent);
